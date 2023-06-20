@@ -9,10 +9,10 @@ const formattedDate = require("../dateVariable")
 createPost.post("/", async (req, res) => {
     const userID = req.session.userId
     if(!userID) {
-        return res.sendStatus(401)
+        return res.status(401).send({message: "Du måste vara inloggad för att skapa annons"})
     }
    
-    const {header, desc, category, price, picture } = req.body
+    const {title, desc, category, price, picture } = req.body
 
  
    const findName = await user.find({_id: `${userID}`}).lean().select('username').exec()
@@ -20,7 +20,7 @@ createPost.post("/", async (req, res) => {
    const createPostData = {
   
     username: findName[0].username,
-    header: header,
+    title: title,
     description: desc,
     category: category,
     price: price,
