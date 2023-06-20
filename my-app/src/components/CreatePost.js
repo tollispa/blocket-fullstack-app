@@ -2,8 +2,8 @@ import {TextField} from "@mui/material"
 import {  MenuItem, Select } from "@mui/material";
 import {useState} from "react"
 import axios from "axios"
-import {Link} from "react-router-dom"
-import { set } from "mongoose";
+
+
 const CreatePost = () => {
     const [category, setCategory] = useState("")
     const [title, setTitle] = useState("")
@@ -69,7 +69,7 @@ const CreatePost = () => {
              value={price}
              style={{marginBottom: "10px"}}/>
              <p className="m-2 min-h-[50px] text-red-400">{errMsg}</p>
-            <button className="bg-blue-400 text-white font-bold rounded p-2">Lägg till annons</button>
+            <button className="bg-blue-400 text-white font-bold rounded p-2">Lägg till annons +</button>
 
             </form>
             </div>
