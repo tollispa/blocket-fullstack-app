@@ -27,7 +27,7 @@ const Login = () => {
             if(username === "" || password === "" ){
                 return alert("Please fill the required fields!")
             }
-            alert(err.response.data.message + "! Try again!")
+            alert("! Try again!")
         })
     }
 
