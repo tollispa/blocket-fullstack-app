@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true
-    }, header: {
+    }, title: {
         type: String,
         required: true
     },
@@ -24,7 +24,7 @@ const postSchema = new mongoose.Schema({
     },
     picture: {
         type: String,
-        required: true
+        required: false
     },
     createdAtDate: {
         type: String,
