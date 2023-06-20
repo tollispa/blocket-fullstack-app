@@ -2,11 +2,14 @@ import {TextField} from "@mui/material"
 import {  MenuItem, Select } from "@mui/material";
 import {useState} from "react"
 import axios from "axios"
+import {Link} from "react-router-dom"
+import { set } from "mongoose";
 const CreatePost = () => {
     const [category, setCategory] = useState("")
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [price, setPrice] = useState("")
+    const [errMsg, setErrMsg] = useState("")
 
    const onSubmit = (e) => {
     e.preventDefault()
@@ -17,8 +20,15 @@ const CreatePost = () => {
       price: price
     }).then((res) => {
       console.log(res)
+      alert("Annonsen skapades!")
+      setCategory("")
+      setPrice("")
+      setDesc("")
+      setErrMsg("")
+      setTitle("")
     }).catch((err) => {
       console.log(err)
+      setErrMsg(err.response.data.message)
     })
    }
 
@@ -26,7 +36,7 @@ const CreatePost = () => {
 
     return (
         <div className=" w-full h-screen flex justify-center">
-            <div className="h-[500px] text-white bg-gray-100">
+            <div className="h-[500px] w-[500px] text-white bg-gray-100">
             <form
             onSubmit={onSubmit}
             className="flex flex-col p-4 m-2">
@@ -48,14 +58,18 @@ const CreatePost = () => {
             <TextField id="outlined-basic" variant="outlined" label="Rubrik" className="bg-white mb-4"
              style={{marginBottom: "10px"}}
              onChange={(e) => setTitle(e.target.value)}
+             value={title}
              />
             <TextField id="outlined-basic" variant="outlined" label="Beskrivning" className="bg-white"
              onChange={(e) => setDesc(e.target.value)}
+             value={desc}
              style={{marginBottom: "10px"}}/>
             <TextField id="outlined-basic" variant="outlined" label="Pris" className="bg-white"
              onChange={(e) => setPrice(e.target.value)}
+             value={price}
              style={{marginBottom: "10px"}}/>
-            <button>Lägg till annons</button>
+             <p className="m-2 min-h-[50px] text-red-400">{errMsg}</p>
+            <button className="bg-blue-400 text-white font-bold rounded p-2">Lägg till annons</button>
 
             </form>
             </div>
