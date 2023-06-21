@@ -8,6 +8,7 @@ const createPost = require("./controllers/createPost")
 const getPosts = require("./controllers/getPosts")
 const getSinglePost = require("./controllers/singlePost")
 const sendMessage = require("./controllers/message")
+const getMessages = require("./controllers/getMessages")
 
 
 
@@ -45,6 +46,7 @@ app.use("/createpost", createPost)
 app.use("/getposts", getPosts)
 app.use("/singlepost", getSinglePost)
 app.use("/sendmessage", sendMessage)
+app.use("/getmessages", getMessages)
 
 app.get("/isLoggedIn", (req, res) => {
     if (!req.session.userId) {
