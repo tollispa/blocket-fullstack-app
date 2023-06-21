@@ -1,6 +1,7 @@
 import { Modal, Form } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import axios from "axios"
+import 'bootstrap/dist/css/bootstrap.css';
 
 const MessageModal = ({ titleMsg }) => {
     const titleMessage = titleMsg[0].title
@@ -31,7 +32,7 @@ const MessageModal = ({ titleMsg }) => {
         setTitle("")
         setMsg("")
       }).catch((err) => {
-        console.log(err)
+        setErrorMsg(err.response.data.message)
       })
      
       
