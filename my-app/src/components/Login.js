@@ -35,7 +35,7 @@ const Login = () => {
             if(username === "" || password === "" ){
                 return setErrMsg("Please fill the required fields!")
             }
-            setErrMsg(err.response.data.message)
+            setErrMsg("Something went wrong!")
         })
     }
 
