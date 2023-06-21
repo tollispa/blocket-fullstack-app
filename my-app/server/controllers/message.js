@@ -9,6 +9,9 @@ const formattedDate = require("../dateVariable")
 sendMessage.post("/", async (req, res) => {
     const messageSent = req.session.userId
     const {recieverName, title, message} = req.body
+    if(!messageSent){
+        return res.status(401).send({message: "Du måste vara inloggad för att skicka meddelande"})
+    }
 
   try {
         
