@@ -7,7 +7,9 @@ import Posts from "./components/Posts";
 import CreatePost from "./components/CreatePost";
 import SinglePost from "./components/SinglePost";
 import { useEffect, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.css';
+
+import Messages from "./components/Messages";
+
 
 
 function App() {
@@ -27,17 +29,32 @@ function App() {
     }).catch((err) => console.log(err))
 }, [])
 
-console.log(loggedInUser, "Inloggad")
+const [messages, setMessages] = useState(null)
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/getmessages")
+    .then((res) => {
+        setMessages(res.data)
+        
+    }).catch((err) => console.log(err))
+   
+},[loggedInUser])
+
+
+
+
   return (
     <>
     <BrowserRouter>
-    <Navbar user={loggedInUser}/>
+    <Navbar user={loggedInUser} messages={messages}/>
     <Routes>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/posts" element={<Posts user={loggedInUser}/>}/>
       <Route path="/createpost" element={<CreatePost/>}/>
       <Route path="/post/:id" element={<SinglePost/>}/>
+      <Route path="/messages" element={<Messages message={messages}  setMessages={setMessages}/>}/>
+
 
 
 
