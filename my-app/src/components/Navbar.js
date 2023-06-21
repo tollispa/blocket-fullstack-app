@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom"
 
 const Navbar = (props) => {
+    
+
     return (
         <div className="border-b-2 h-auto w-full text-gray-600 relative">
             
@@ -9,16 +11,16 @@ const Navbar = (props) => {
             <Link to="/createpost" className="no-underline p-2 mr-3 bg-blue-400 text-white font-bold rounded hover:bg-blue-300 cursor-pointer">
                     Lägg till annons +
                 </Link >
-                <Link to="posts" className="no-underline font-bold text-xl cursor-pointer hover:text-orange-400 duration-300 hover:border-b-2 hover:border-orange-400">
+                <Link to="posts" className="no-underline  text-xl cursor-pointer hover:text-blue-300 duration-200 hover:border-b-2 hover:border-blue-300">
                     Annonser
                 </Link >
-                <Link className="no-underline font-bold text-xl cursor-pointer hover:text-orange-400 duration-300 hover:border-b-2 hover:border-orange-400">
-                   Meddelanden
+                <Link to="/messages" className="no-underline  text-xl cursor-pointer hover:text-blue-300 duration-200 hover:border-b-2 hover:border-blue-300">
+                   Meddelanden {props.messages ? <span className="text-red-500">({props.messages.length})</span> : null }
                 </Link>  
-                {!props.user ? <Link to="/login"className="no-underline font-bold text-xl cursor-pointer hover:text-orange-400 duration-300 hover:border-b-2 hover:border-orange-400">
+                {!props.user ? <Link to="/login"className="no-underline  text-xl cursor-pointer hover:text-blue-300 duration-200 hover:border-b-2 hover:border-blue-300">
                     Konto
                 </Link> : null }
-                {props.user ? <Link to="/login" className="no-underline font-bold text-xl cursor-pointer hover:text-orange-400 duration-300 hover:border-b-2 hover:border-orange-400">{props.user} Konto</Link>: null}
+                {props.user ? <Link to="/login" className="no-underline  text-xl cursor-pointer hover:text-blue-300 duration-200 hover:border-b-2 hover:border-blue-300">{props.user} Konto</Link>: null}
             </ul>
         </div>
     )
