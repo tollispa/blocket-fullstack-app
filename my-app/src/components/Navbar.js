@@ -4,7 +4,7 @@ const Navbar = (props) => {
     
 
     return (
-        <div className="border-b-2 h-auto w-full text-gray-600 relative">
+        <div className="border-b-2 h-auto w-full text-gray-600">
             
             <ul className="flex justify-end gap-4 m-2">
             <Link to="/" className="text-red-400 font-bold text-4xl absolute left-5 cursor-pointer no-underline">Blocket .</Link>

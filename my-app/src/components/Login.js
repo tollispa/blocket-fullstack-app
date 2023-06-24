@@ -2,14 +2,16 @@ import {TextField} from "@mui/material"
 import {Link} from "react-router-dom"
 import { useState, useEffect} from "react"
 import axios from "axios"
+import LoginPage from "./LoginPage"
 
 
-const Login = () => {
+const Login = ({user}) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errMsg, setErrMsg] = useState("")
     const [loginMsg, setLoginMsg] = useState("")
-
+    
+ 
     useEffect(() => {
         setErrMsg("")
       
@@ -28,6 +30,7 @@ const Login = () => {
            setLoginMsg(res.data.message + "!")
             setPassword("")
             setUsername("")
+            window.location.reload()
          
             
             
@@ -35,11 +38,13 @@ const Login = () => {
             if(username === "" || password === "" ){
                 return setErrMsg("Please fill the required fields!")
             }
-            setErrMsg("Something went wrong!")
+            setErrMsg(err.response.data.message)
         })
     }
 
-    
+    if(user){
+        return <LoginPage user={user}/>
+    }
     return (
         <div className="w-full h-[650px] bg-gray-100 flex justify-center items-center">
             <form 

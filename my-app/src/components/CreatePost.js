@@ -9,7 +9,10 @@ const CreatePost = () => {
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [price, setPrice] = useState("")
+    const [picture, setPicture] = useState("")
+
     const [errMsg, setErrMsg] = useState("")
+
 
    const onSubmit = (e) => {
     e.preventDefault()
@@ -17,7 +20,8 @@ const CreatePost = () => {
       category: category,
       title: title,
       desc: desc,
-      price: price
+      price: price,
+      picture: picture
     }).then((res) => {
       console.log(res)
       alert("Annonsen skapades!")
@@ -25,6 +29,7 @@ const CreatePost = () => {
       setPrice("")
       setDesc("")
       setErrMsg("")
+      setPicture("")
       setTitle("")
     }).catch((err) => {
       console.log(err)
@@ -67,6 +72,10 @@ const CreatePost = () => {
             <TextField id="outlined-basic" variant="outlined" label="Pris" className="bg-white"
              onChange={(e) => setPrice(e.target.value)}
              value={price}
+             style={{marginBottom: "10px"}}/>
+              <TextField id="outlined-basic" variant="outlined" label="Bild (url)" className="bg-white"
+             onChange={(e) => setPicture(e.target.value)}
+             value={picture}
              style={{marginBottom: "10px"}}/>
              <p className="m-2 min-h-[50px] text-red-400">{errMsg}</p>
             <button className="bg-blue-400 text-white font-bold rounded p-2">Lägg till annons +</button>

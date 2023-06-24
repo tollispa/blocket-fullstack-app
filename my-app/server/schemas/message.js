@@ -14,10 +14,6 @@ const messageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    title: {
-        type: String,
-        required: true
-    },
     message: {
         type: String,
         required: true
@@ -25,6 +21,18 @@ const messageSchema = new mongoose.Schema({
     sendAtDate: {
         type: String,
         required: true
+    },
+    response: {
+        fromReciever: {
+            type: Array,
+            sendAtDate: String,
+            default: []
+        },
+        fromUser: {
+            type: Array,
+            sendAtDate: String,
+            default: []
+        }
     }
 },{ strict: "throw" })
 const Message = mongoose.model('Messages', messageSchema);

@@ -9,6 +9,10 @@ const getPosts = require("./controllers/getPosts")
 const getSinglePost = require("./controllers/singlePost")
 const sendMessage = require("./controllers/message")
 const getMessages = require("./controllers/getMessages")
+const deletePost = require("./controllers/deletePost")
+const logout = require("./Auth/logout")
+const editPost = require("./controllers/editPost")
+const getSingleMsg = require("./controllers/singleMsg")
 
 
 
@@ -47,6 +51,10 @@ app.use("/getposts", getPosts)
 app.use("/singlepost", getSinglePost)
 app.use("/sendmessage", sendMessage)
 app.use("/getmessages", getMessages)
+app.use("/deletepost", deletePost)
+app.use("/logout", logout)
+app.use("/editpost", editPost)
+app.use("/singlemsg", getSingleMsg)
 
 app.get("/isLoggedIn", (req, res) => {
     if (!req.session.userId) {
